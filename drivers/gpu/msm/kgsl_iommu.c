@@ -89,11 +89,13 @@ static int kgsl_iommu_fault_handler(struct iommu_domain *domain,
 	fsr = KGSL_IOMMU_GET_IOMMU_REG(iommu_unit->reg_map.hostptr,
 		iommu_dev->ctx_id, FSR);
 
+#if 0
 	KGSL_MEM_CRIT(iommu_dev->kgsldev,
 		"GPU PAGE FAULT: addr = %lX pid = %d\n",
 		addr, kgsl_mmu_get_ptname_from_ptbase(ptbase));
 	KGSL_MEM_CRIT(iommu_dev->kgsldev, "context = %d FSR = %X\n",
 		iommu_dev->ctx_id, fsr);
+#endif
 
 	trace_kgsl_mmu_pagefault(iommu_dev->kgsldev, addr,
 			kgsl_mmu_get_ptname_from_ptbase(ptbase), 0);
